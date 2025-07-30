@@ -128,7 +128,58 @@ button:hover {
             object-fit: cover;
         }
 
+.food-card {
+  position: relative;
+  width: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.6s ease;
+  text-align: center;
+}
 
 
+/* Price tag hanging at top-right */
+.price-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e0ff33;
+  color: #000000;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transform: rotate(8deg);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
 
+/* Rope effect */
+.price-tag::before {
+  content: ' ';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 12px;
+  background: #aaa;
+  box-shadow: inset 0 0 2px #000;
+  border-radius: 1px;
+}
 
+/* Swing on hover/touch */
+.food-card:hover .price-tag,
+.food-card:active .price-tag {
+  animation: swing 0.9s ease;
+}
+
+@keyframes swing {
+  0%   { transform: rotate(8deg); }
+  25%  { transform: rotate(15deg); }
+  50%  { transform: rotate(3deg); }
+  75%  { transform: rotate(12deg); }
+  100% { transform: rotate(8deg); }
+}
